@@ -14,6 +14,13 @@ export default function App() {
     setTodos([...todos, todo])
   }
 
+  const handleRemove = (index) => {
+    const modifiedTodos = todos.filter((todo, todoIndex) => {
+      return index !== todoIndex
+    })
+    setTodos(modifiedTodos)
+  }
+
   return (
     <div>
       <h1>Project React Todo</h1>
@@ -27,7 +34,12 @@ export default function App() {
 
       <ul>
         {todos.map((todo, index) => {
-          return <li key={index}>{todo}</li>
+          return (
+            <li key={index}>
+              <span>{todo}</span>
+              <button onClick={() => handleRemove(index)}>x</button>
+            </li>
+          )
         })}
       </ul>
     </div>
