@@ -1,11 +1,7 @@
 import { useState } from 'react'
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    'Reading documentation',
-    'Attending online class',
-    'Going out with friends',
-  ])
+  const [todos, setTodos] = useState([])
 
   const [todo, setTodo] = useState('')
 
@@ -14,6 +10,7 @@ export default function App() {
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault()
     setTodos([...todos, todo])
   }
 
@@ -21,10 +18,9 @@ export default function App() {
     <div>
       <h1>Project React Todo</h1>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <input type="text" name="todo" onChange={handleChange} />
-          <code>{todo}</code>
         </fieldset>
         <input type="submit" value="Add todo" />
       </form>
