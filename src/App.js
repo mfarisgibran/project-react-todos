@@ -12,6 +12,7 @@ export default function App() {
   const handleSubmit = (event) => {
     event.preventDefault()
     setTodos([...todos, todo])
+    setTodo('')
   }
 
   const handleRemove = (index) => {
@@ -27,7 +28,7 @@ export default function App() {
 
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <input type="text" name="todo" onChange={handleChange} />
+          <input type="text" name="todo" onChange={handleChange} value={todo} />
         </fieldset>
         <input type="submit" value="Add todo" />
       </form>
